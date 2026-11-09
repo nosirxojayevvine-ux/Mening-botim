@@ -19,7 +19,7 @@ ADMIN_ID = 8019481444
 BOT_USERNAME = "SaveToVid_bot"
 
 PORT = int(os.getenv("PORT", "10000"))
-MAX_FILE_SIZE = 49 * 1024 * 1024
+MAX_FILE_SIZE = 500 * 1024 * 1024
 DB_PATH = os.getenv("DB_PATH", "bot.db")
 
 if not TOKEN:
