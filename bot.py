@@ -1,4 +1,3 @@
-
 import os
 import re
 import uuid
@@ -465,7 +464,6 @@ def download_and_send(chat_id, url, status_id):
                     caption=f"🎬 @{BOT_USERNAME}"
                 )
 
-            # MUHIM: muvaffaqiyat xabarida ham guruh tugmasi bor
             bot.send_message(
                 chat_id,
                 TEXTS[lang]["success"],
@@ -533,7 +531,7 @@ def download_callback(call):
     ).start()
 
 
-# =============== HAVOLALAR ===============
+# =============== HAVOLALAR VA ADMIN XABarlari ===============
 
 URL_RE = re.compile(
     r"https?://[^\s]+",
@@ -543,11 +541,12 @@ URL_RE = re.compile(
 
 @bot.message_handler(
     content_types=["text"],
-    func=lambda m: m.chat.type == "private"
+    func=lambda m: m.chat.type == "private" and not m.text.startswith("/")
 )
 def private_text(message):
     save_user(message.chat.id)
 
+    # Agar admin xabar yuborish rejimida bo'lsa
     if message.chat.id in broadcast_waiting:
         broadcast_waiting.discard(message.chat.id)
         broadcast(message)
@@ -555,6 +554,11 @@ def private_text(message):
 
     lang = get_lang(message.chat.id)
     match = URL_RE.search(message.text or "")
+
+    # Agar o'zingiz (Admin) yozgan bo'lsangiz va havola tashlamagan bo'lsangiz:
+    if message.from_user.id == ADMIN_ID and not match:
+        bot.reply_to(message, "Buyruq yoki so'zingiz qabul qilindi! 😎")
+        return
 
     if not match:
         bot.reply_to(
@@ -729,8 +733,6 @@ def left_member(message):
 
 def is_advertisement(message):
     text = message.text or message.caption or ""
-
-    # Havolali xabarlar reklama sifatida qaraladi.
     return bool(URL_RE.search(text))
 
 
