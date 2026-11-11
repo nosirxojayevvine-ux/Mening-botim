@@ -18,9 +18,6 @@ import yt_dlp
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_ID = 8019481444
-ADMIN_USERNAME = "@nosirxojayev"
-
-# TO'G'RILANGAN BOT USERNAME
 BOT_USERNAME = "SavedToVid_bot"
 
 MAX_FILE_SIZE_MB = 49
@@ -42,6 +39,199 @@ db_lock = threading.Lock()
 
 logging.basicConfig(level=logging.INFO)
 
+# =============== MATNLAR ===============
+
+TEXTS = {
+    "uz": {
+        "choose": "🌐 Tilni tanlang:",
+        "welcome": """👋 Assalomu alaykum!
+
+🚀 SAVE VIDEO botiga xush kelibsiz!
+
+Men ijtimoiy tarmoqlardan video yuklab beruvchi botman.
+
+📥 QO‘LLAB-QUVVATLANADIGAN TARMOQLAR:
+
+📸 Instagram
+▶️ YouTube
+🎵 TikTok
+💜 Likee
+🌐 Va boshqa qo‘llab-quvvatlanadigan platformalar.
+
+🎬 ASOSIY IMKONIYATLAR:
+
+✅ Videolarni MP4 formatida yuklab olish.
+✅ Mavjud sifat variantlarini tanlash.
+✅ Havola orqali tez yuklab olish.
+✅ Sodda va qulay foydalanish.
+
+👥 GURUHLAR UCHUN MAXSUS FUNKSIYALAR:
+
+🧹 Guruhga a'zo qo‘shilganda yoki a'zo chiqib ketganda paydo bo‘ladigan xabarlarni avtomatik o‘chiradi.
+
+🚫 Reklama va keraksiz havolali xabarlarni o‘chiradi.
+
+🔒 Guruhingizni tartibli saqlashga yordam beradi.
+
+⚙️ Ushbu funksiyalar uchun botga administrator huquqi va xabarlarni o‘chirish ruxsatini bering.
+
+➕ BOTNI GURUHINGIZGA QO‘SHING!
+
+❤️ Bizning xizmatimizdan foydalanganingiz uchun rahmat!
+
+📩 Video havolasini yuboring va yuklab olishni boshlang!""",
+        "link": "📩 Video havolasini yuboring.",
+        "working": "⏳ Video/MP4 yuklab olinmoqda...",
+        "success": f"""✅ Yuklab olindi!
+
+Yuborgan linkingiz uchun @{BOT_USERNAME} nomidan sizga rahmat! 🔥
+
+✨ Botning qo‘shimcha funksiyalari:
+
+👥 Guruhlarda kirdi-chiqdi xabarlarini avtomatik o‘chiradi.
+🚫 Reklama va keraksiz xabarlarni o‘chirishga yordam beradi.
+
+❤️ Biz bilan qoling!""",
+        "error": "❌ Videoni yuklab bo‘lmadi. Boshqa havolani yuborib ko‘ring.",
+        "youtube_error": "❗ YouTube videosini yuklab bo‘lmadi. YouTube cheklovlari yoki video sozlamalari sabab bo‘lishi mumkin.",
+        "button": "🎬 Videoni yuklab olish",
+        "group": "➕ Guruhga qo‘shish",
+        "selected": "✅ Til o‘zgartirildi.",
+        "accepted": "✅ Havola qabul qilindi:"
+    },
+
+    "ru": {
+        "choose": "🌐 Выберите язык:",
+        "welcome": """👋 Здравствуйте!
+
+🚀 Добро пожаловать в SAVE VIDEO!
+
+Я бот для скачивания видео из социальных сетей.
+
+📥 ПОДДЕРЖИВАЕМЫЕ ПЛАТФОРМЫ:
+
+📸 Instagram
+▶️ YouTube
+🎵 TikTok
+💜 Likee
+🌐 И другие поддерживаемые платформы.
+
+🎬 ВОЗМОЖНОСТИ:
+
+✅ Скачивание видео в MP4.
+✅ Доступные варианты качества.
+✅ Скачивание по ссылке.
+
+👥 ФУНКЦИИ ДЛЯ ГРУПП:
+
+🧹 Автоматическое удаление сообщений о входе и выходе участников.
+
+🚫 Удаление рекламы и нежелательных ссылок.
+
+⚙️ Предоставьте боту права администратора и разрешение на удаление сообщений.
+
+➕ ДОБАВИТЬ БОТА В ГРУППУ!
+
+❤️ Спасибо за использование нашего бота!""",
+        "link": "📩 Отправьте ссылку на видео.",
+        "working": "⏳ Загружаем видео...",
+        "success": f"✅ Видео загружено!\n\nСпасибо за использование @{BOT_USERNAME}! 🔥\n\n👥 Удаление сообщений о входе и выходе.\n🚫 Удаление рекламы.",
+        "error": "❌ Не удалось скачать видео. Попробуйте другую ссылку.",
+        "youtube_error": "❗ Не удалось скачать YouTube-видео. Возможны ограничения YouTube.",
+        "button": "🎬 Скачать видео",
+        "group": "➕ Добавить в группу",
+        "selected": "✅ Язык изменён.",
+        "accepted": "✅ Ссылка принята:"
+    },
+
+    "en": {
+        "choose": "🌐 Choose your language:",
+        "welcome": """👋 Hello!
+
+🚀 Welcome to SAVE VIDEO!
+
+I am a social media video downloader bot.
+
+📥 SUPPORTED PLATFORMS:
+
+📸 Instagram
+▶️ YouTube
+🎵 TikTok
+💜 Likee
+🌐 Other supported platforms.
+
+🎬 FEATURES:
+
+✅ MP4 video downloads.
+✅ Available quality options.
+✅ Download using a link.
+
+👥 GROUP FEATURES:
+
+🧹 Automatically deletes join and leave notifications.
+
+🚫 Helps remove advertisements and unwanted links.
+
+⚙️ Give the bot administrator rights and permission to delete messages.
+
+➕ ADD BOT TO GROUP!
+
+❤️ Thank you for using our bot!""",
+        "link": "📩 Please send a video link.",
+        "working": "⏳ Downloading video...",
+        "success": f"✅ Download complete!\n\nThank you for using @{BOT_USERNAME}! 🔥\n\n👥 Join and leave notifications are removed.\n🚫 Helps remove advertisements.",
+        "error": "❌ Download failed. Try another link.",
+        "youtube_error": "❗ Could not download YouTube video. Platform restrictions may apply.",
+        "button": "🎬 Download video",
+        "group": "➕ Add to group",
+        "selected": "✅ Language changed.",
+        "accepted": "✅ Link accepted:"
+    },
+
+    "ar": {
+        "choose": "🌐 اختر اللغة:",
+        "welcome": """👋 مرحباً!
+
+🚀 أهلاً بك في SAVE VIDEO!
+
+أنا بوت لتحميل الفيديوهات من مواقع التواصل الاجتماعي.
+
+📥 المنصات المدعومة:
+
+📸 Instagram
+▶️ YouTube
+🎵 TikTok
+💜 Likee
+🌐 ومنصات أخرى مدعومة.
+
+🎬 المميزات:
+
+✅ تحميل الفيديو بصيغة MP4.
+✅ خيارات الجودة المتاحة.
+✅ التحميل باستخدام الرابط.
+
+👥 مميزات المجموعات:
+
+🧹 حذف رسائل دخول وخروج الأعضاء تلقائياً.
+
+🚫 المساعدة في حذف الإعلانات والروابط غير المرغوب فيها.
+
+⚙️ امنح البوت صلاحيات المشرف وإذن حذف الرسائل.
+
+➕ أضف البوت إلى المجموعة!
+
+❤️ شكراً لاستخدامك البوت!""",
+        "link": "📩 أرسل رابط الفيديو.",
+        "working": "⏳ جارٍ تحميل الفيديو...",
+        "success": f"✅ اكتمل التحميل!\n\nشكراً لاستخدام @{BOT_USERNAME}! 🔥",
+        "error": "❌ تعذر تحميل الفيديو. جرب رابطاً آخر.",
+        "youtube_error": "❗ تعذر تحميل فيديو YouTube. قد تكون هناك قيود.",
+        "button": "🎬 تحميل الفيديو",
+        "group": "➕ أضف إلى المجموعة",
+        "selected": "✅ تم تغيير اللغة.",
+        "accepted": "✅ تم قبول الرابط:"
+    }
+}
 
 # =============== DATABASE ===============
 
@@ -52,22 +242,18 @@ def db():
 def init_db():
     with db_lock:
         conn = db()
-        cur = conn.cursor()
-
-        cur.execute("""
+        conn.execute("""
             CREATE TABLE IF NOT EXISTS users (
                 chat_id INTEGER PRIMARY KEY,
                 lang TEXT DEFAULT 'uz'
             )
         """)
-
-        cur.execute("""
+        conn.execute("""
             CREATE TABLE IF NOT EXISTS chats (
                 chat_id INTEGER PRIMARY KEY,
                 chat_type TEXT
             )
         """)
-
         conn.commit()
         conn.close()
 
@@ -87,7 +273,7 @@ def save_chat(chat_id, chat_type):
     with db_lock:
         conn = db()
         conn.execute(
-            "INSERT OR REPLACE INTO chats(chat_id, chat_type) VALUES(?, ?)",
+            "INSERT OR REPLACE INTO chats VALUES(?, ?)",
             (chat_id, chat_type)
         )
         conn.commit()
@@ -117,229 +303,7 @@ def set_lang(chat_id, lang):
         conn.close()
 
 
-# =============== TILLAR ===============
-
-TEXTS = {
-    "uz": {
-        "choose": "🌐 Tilni tanlang:",
-
-        "welcome": """👋 Assalomu alaykum!
-
-🚀 SAVE VIDEO botiga xush kelibsiz!
-
-Men sizga ijtimoiy tarmoqlardagi video va media fayllarni tez va qulay yuklab olishda yordam beraman.
-
-📥 VIDEO YUKLAB OLISH
-
-Quyidagi platformalardan video havolalarini yuboring:
-
-📸 Instagram
-▶️ YouTube
-🎵 TikTok
-💜 Likee
-🌐 Va boshqa qo‘llab-quvvatlanadigan platformalar.
-
-🎬 YUKLAB OLISH IMKONIYATLARI
-
-✅ Videolarni MP4 formatida yuklab olish.
-✅ Mavjud sifat variantlarini tanlash.
-✅ Havola orqali yuklab olish.
-✅ Sodda va qulay foydalanish.
-
-👥 GURUHLAR UCHUN MAXSUS IMKONIYATLAR
-
-Botni guruhingizga qo‘shing:
-
-🧹 Kirdi-chiqdi xabarlarini avtomatik o‘chirish — guruhga a'zo qo‘shilganda yoki a'zo chiqib ketganda paydo bo‘ladigan xabarlarni o‘chiradi.
-
-🚫 Reklama va keraksiz xabarlarni o‘chirishga yordam beradi.
-
-🔒 Guruhingizni tartibli va ozoda saqlang!
-
-⚙️ Ushbu imkoniyatlar ishlashi uchun botga administrator huquqi va xabarlarni o‘chirish ruxsatini bering.
-
-➕ BOTNI GURUHGA QO‘SHING
-
-❤️ Xizmatimizdan foydalanganingiz uchun rahmat!
-
-📩 Video havolasini yuboring va yuklab olishni boshlang!""",
-
-        "link": "📩 Iltimos, video havolasini yuboring.",
-        "working": "⏳ Video/MP4 yuklab olinmoqda...",
-        "success": f"""✅ Yuklab olindi!
-
-Yuborgan linkingiz uchun @{BOT_USERNAME} nomidan sizga rahmat! 🔥
-
-✨ Botning qo‘shimcha funksiyalari:
-
-👥 Guruhlarda kirdi-chiqdi xabarlarini avtomatik o‘chiradi.
-🚫 Reklama va keraksiz xabarlarni o‘chirishga yordam beradi.
-
-❤️ Biz bilan qoling!""",
-        "error": "❌ Videoni yuklab bo‘lmadi. Boshqa havolani yuborib ko‘ring.",
-        "youtube_error": "❗ YouTube videosini yuklab bo‘lmadi. Havola yoki YouTube cheklovlari sabab bo‘lishi mumkin.",
-        "button": "🎬 Videoni yuklab olish",
-        "group": "➕ Guruhga qo‘shish",
-        "selected": "✅ Til o‘zgartirildi.",
-        "accepted": "✅ Havola qabul qilindi:"
-    },
-
-    "ru": {
-        "choose": "🌐 Выберите язык:",
-
-        "welcome": """👋 Здравствуйте!
-
-🚀 Добро пожаловать в SAVE VIDEO!
-
-Я помогу вам быстро и удобно скачивать видео из социальных сетей.
-
-📥 СКАЧИВАНИЕ ВИДЕО
-
-📸 Instagram
-▶️ YouTube
-🎵 TikTok
-💜 Likee
-🌐 И другие поддерживаемые платформы.
-
-🎬 ВОЗМОЖНОСТИ
-
-✅ Скачивание видео в MP4.
-✅ Выбор доступного качества.
-✅ Скачивание по ссылке.
-✅ Простой интерфейс.
-
-👥 ВОЗМОЖНОСТИ ДЛЯ ГРУПП
-
-🧹 Автоматическое удаление сообщений о входе и выходе участников.
-
-🚫 Удаление рекламы и нежелательных сообщений.
-
-🔒 Поддерживайте порядок в своей группе!
-
-⚙️ Для работы функций предоставьте боту права администратора и разрешение на удаление сообщений.
-
-➕ ДОБАВИТЬ БОТА В ГРУППУ
-
-❤️ Спасибо за использование нашего бота!
-
-📩 Отправьте ссылку на видео!""",
-
-        "link": "📩 Отправьте ссылку на видео.",
-        "working": "⏳ Загружаем видео...",
-        "success": f"✅ Видео загружено!\n\nСпасибо за использование @{BOT_USERNAME}! 🔥\n\n👥 Бот удаляет сообщения о входе и выходе участников.\n🚫 Помогает удалять рекламу.",
-        "error": "❌ Не удалось скачать видео. Попробуйте другую ссылку.",
-        "youtube_error": "❗ Не удалось скачать YouTube-видео. Возможны ограничения платформы.",
-        "button": "🎬 Скачать видео",
-        "group": "➕ Добавить в группу",
-        "selected": "✅ Язык изменён.",
-        "accepted": "✅ Ссылка принята:"
-    },
-
-    "en": {
-        "choose": "🌐 Choose your language:",
-
-        "welcome": """👋 Hello!
-
-🚀 Welcome to SAVE VIDEO!
-
-I help you download videos from social networks quickly and easily.
-
-📥 VIDEO DOWNLOADING
-
-📸 Instagram
-▶️ YouTube
-🎵 TikTok
-💜 Likee
-🌐 And other supported platforms.
-
-🎬 FEATURES
-
-✅ Download videos in MP4.
-✅ Choose available quality.
-✅ Download using a link.
-✅ Simple interface.
-
-👥 GROUP FEATURES
-
-🧹 Automatically delete join and leave notifications.
-
-🚫 Delete advertisements and unwanted messages.
-
-🔒 Keep your group clean and organized!
-
-⚙️ Give the bot administrator rights and permission to delete messages.
-
-➕ ADD BOT TO GROUP
-
-❤️ Thank you for using our service!
-
-📩 Send a video link to get started!""",
-
-        "link": "📩 Please send a video link.",
-        "working": "⏳ Downloading video...",
-        "success": f"✅ Download complete!\n\nThank you for using @{BOT_USERNAME}! 🔥\n\n👥 Automatically deletes join and leave notifications.\n🚫 Helps remove advertisements.",
-        "error": "❌ Download failed. Please try another link.",
-        "youtube_error": "❗ Could not download YouTube video. Platform restrictions may apply.",
-        "button": "🎬 Download video",
-        "group": "➕ Add to group",
-        "selected": "✅ Language changed.",
-        "accepted": "✅ Link accepted:"
-    },
-
-    "ar": {
-        "choose": "🌐 اختر اللغة:",
-
-        "welcome": """👋 مرحباً!
-
-🚀 أهلاً بك في SAVE VIDEO!
-
-أساعدك على تحميل الفيديوهات من مواقع التواصل الاجتماعي بسهولة.
-
-📥 تحميل الفيديوهات
-
-📸 Instagram
-▶️ YouTube
-🎵 TikTok
-💜 Likee
-🌐 ومنصات أخرى مدعومة.
-
-🎬 المميزات
-
-✅ تحميل الفيديو بصيغة MP4.
-✅ اختيار الجودة المتاحة.
-✅ التحميل باستخدام الرابط.
-✅ واجهة سهلة.
-
-👥 مميزات المجموعات
-
-🧹 حذف رسائل دخول وخروج الأعضاء تلقائياً.
-
-🚫 حذف الإعلانات والرسائل غير المرغوب فيها.
-
-🔒 حافظ على مجموعتك منظمة!
-
-⚙️ امنح البوت صلاحيات المشرف وإذن حذف الرسائل.
-
-➕ أضف البوت إلى المجموعة
-
-❤️ شكراً لاستخدامك خدمتنا!
-
-📩 أرسل رابط الفيديو للبدء!""",
-
-        "link": "📩 أرسل رابط الفيديو.",
-        "working": "⏳ جارٍ تحميل الفيديو...",
-        "success": f"✅ اكتمل التحميل!\n\nشكراً لاستخدام @{BOT_USERNAME}! 🔥\n\n👥 يحذف رسائل دخول وخروج الأعضاء.\n🚫 يساعد في حذف الإعلانات.",
-        "error": "❌ تعذر تحميل الفيديو. جرب رابطاً آخر.",
-        "youtube_error": "❗ تعذر تحميل فيديو YouTube. قد تكون هناك قيود على المنصة.",
-        "button": "🎬 تحميل الفيديو",
-        "group": "➕ أضف إلى المجموعة",
-        "selected": "✅ تم تغيير اللغة.",
-        "accepted": "✅ تم قبول الرابط:"
-    }
-}
-
-
-# =============== MENYU ===============
+# =============== KEYBOARD ===============
 
 def language_keyboard():
     markup = types.InlineKeyboardMarkup()
@@ -387,11 +351,9 @@ def start(message):
 
     save_user(message.chat.id)
 
-    lang = get_lang(message.chat.id)
-
     bot.send_message(
         message.chat.id,
-        TEXTS[lang]["choose"],
+        TEXTS[get_lang(message.chat.id)]["choose"],
         reply_markup=language_keyboard()
     )
 
@@ -429,25 +391,24 @@ def language_callback(call):
     )
 
 
-# =============== YUKLAB OLISH ===============
+# =============== VIDEO YUKLASH ===============
 
 def extract_video(url, folder):
     output = os.path.join(
         folder,
-        "%(title).80s-%(id)s.%(ext)s"
+        "%(title).70s-%(id)s.%(ext)s"
     )
 
     options = {
         "outtmpl": output,
         "format": "best[ext=mp4]/best",
-        "merge_output_format": "mp4",
         "noplaylist": True,
         "max_filesize": MAX_FILE_SIZE,
         "socket_timeout": 30,
         "retries": 3,
         "fragment_retries": 3,
         "quiet": True,
-        "no_warnings": True,
+        "no_warnings": False,
         "cachedir": False,
     }
 
@@ -458,7 +419,6 @@ def extract_video(url, folder):
 
         for item in info.get("requested_downloads") or []:
             candidate = item.get("filepath")
-
             if candidate and os.path.isfile(candidate):
                 filepath = candidate
                 break
@@ -472,9 +432,9 @@ def extract_video(url, folder):
             )[0]
 
             candidates = [
-                os.path.join(folder, f)
-                for f in os.listdir(folder)
-                if f.startswith(base)
+                os.path.join(folder, name)
+                for name in os.listdir(folder)
+                if name.startswith(base)
             ]
 
             if candidates:
@@ -484,18 +444,17 @@ def extract_video(url, folder):
             raise FileNotFoundError("Video fayli topilmadi")
 
         if os.path.getsize(filepath) > MAX_FILE_SIZE:
-            raise ValueError("Video hajmi limitdan katta")
+            raise ValueError("Video 49 MB limitdan katta")
 
         return filepath
 
 
-def download_and_send(chat_id, url, status_message_id):
+def download_and_send(chat_id, url, status_id):
     folder = tempfile.mkdtemp(prefix="video_")
 
     try:
         with download_lock:
             filepath = extract_video(url, folder)
-
             lang = get_lang(chat_id)
 
             with open(filepath, "rb") as video:
@@ -506,16 +465,15 @@ def download_and_send(chat_id, url, status_message_id):
                     caption=f"🎬 @{BOT_USERNAME}"
                 )
 
+            # MUHIM: muvaffaqiyat xabarida ham guruh tugmasi bor
             bot.send_message(
                 chat_id,
-                TEXTS[lang]["success"]
+                TEXTS[lang]["success"],
+                reply_markup=main_keyboard(lang)
             )
 
         try:
-            bot.delete_message(
-                chat_id,
-                status_message_id
-            )
+            bot.delete_message(chat_id, status_id)
         except Exception:
             pass
 
@@ -532,7 +490,7 @@ def download_and_send(chat_id, url, status_message_id):
             bot.edit_message_text(
                 text,
                 chat_id,
-                status_message_id
+                status_id
             )
         except Exception:
             bot.send_message(chat_id, text)
@@ -546,9 +504,9 @@ def download_and_send(chat_id, url, status_message_id):
 )
 def download_callback(call):
     key = call.data.replace("download_", "", 1)
-    item = pending_downloads.pop(key, None)
+    url = pending_downloads.pop(key, None)
 
-    if not item:
+    if not url:
         bot.answer_callback_query(
             call.id,
             "Havola muddati tugagan."
@@ -568,7 +526,7 @@ def download_callback(call):
         target=download_and_send,
         args=(
             call.message.chat.id,
-            item,
+            url,
             status.message_id
         ),
         daemon=True
@@ -596,7 +554,6 @@ def private_text(message):
         return
 
     lang = get_lang(message.chat.id)
-
     match = URL_RE.search(message.text or "")
 
     if not match:
@@ -612,7 +569,6 @@ def private_text(message):
     pending_downloads[key] = url
 
     markup = types.InlineKeyboardMarkup()
-
     markup.add(
         types.InlineKeyboardButton(
             TEXTS[lang]["button"],
@@ -627,7 +583,7 @@ def private_text(message):
     )
 
 
-# =============== ADMIN BUYRUQLARI ===============
+# =============== ADMIN ===============
 
 def is_admin(message):
     return (
@@ -656,10 +612,9 @@ def stats(message):
 
     bot.reply_to(
         message,
-        f"""📊 BOT STATISTIKASI
-
-👤 Foydalanuvchilar: {users}
-👥 Guruhlar: {groups}"""
+        f"📊 BOT STATISTIKASI\n\n"
+        f"👤 Foydalanuvchilar: {users}\n"
+        f"👥 Guruhlar: {groups}"
     )
 
 
@@ -672,7 +627,8 @@ def send_command(message):
 
     bot.reply_to(
         message,
-        "📢 Yuboriladigan matn, rasm yoki xabarni jo‘nating.\n\nBekor qilish: /cancel"
+        "📢 Yuboriladigan matn yoki rasmni jo‘nating.\n"
+        "Bekor qilish: /cancel"
     )
 
 
@@ -680,11 +636,7 @@ def send_command(message):
 def cancel_command(message):
     if message.chat.id in broadcast_waiting:
         broadcast_waiting.discard(message.chat.id)
-
-        bot.reply_to(
-            message,
-            "❌ Yuborish bekor qilindi."
-        )
+        bot.reply_to(message, "❌ Bekor qilindi.")
 
 
 def broadcast(message):
@@ -692,13 +644,13 @@ def broadcast(message):
         conn = db()
 
         targets = [
-            x[0] for x in conn.execute(
+            row[0] for row in conn.execute(
                 "SELECT chat_id FROM users"
             ).fetchall()
         ]
 
         targets += [
-            x[0] for x in conn.execute(
+            row[0] for row in conn.execute(
                 "SELECT chat_id FROM chats"
             ).fetchall()
         ]
@@ -714,15 +666,12 @@ def broadcast(message):
                 message.chat.id,
                 message.message_id
             )
-
             sent += 1
             time.sleep(0.05)
-
-        except Exception as error:
+        except Exception:
             logging.warning(
-                "Broadcast failed for %s: %s",
-                chat_id,
-                error
+                "Broadcast failed: %s",
+                chat_id
             )
 
     bot.send_message(
@@ -733,12 +682,8 @@ def broadcast(message):
 
 @bot.message_handler(
     content_types=[
-        "photo",
-        "video",
-        "document",
-        "animation",
-        "audio",
-        "voice"
+        "photo", "video", "document",
+        "animation", "audio", "voice"
     ],
     func=lambda m: (
         m.chat.type == "private"
@@ -750,16 +695,13 @@ def broadcast_media(message):
     broadcast(message)
 
 
-# =============== GURUH FUNKSIYALARI ===============
+# =============== GURUH MODERATORI ===============
 
 @bot.message_handler(
     content_types=["new_chat_members"]
 )
 def new_members(message):
-    save_chat(
-        message.chat.id,
-        message.chat.type
-    )
+    save_chat(message.chat.id, message.chat.type)
 
     try:
         bot.delete_message(
@@ -767,20 +709,14 @@ def new_members(message):
             message.message_id
         )
     except Exception as error:
-        logging.warning(
-            "Join notification delete failed: %s",
-            error
-        )
+        logging.warning("Join delete: %s", error)
 
 
 @bot.message_handler(
     content_types=["left_chat_member"]
 )
 def left_member(message):
-    save_chat(
-        message.chat.id,
-        message.chat.type
-    )
+    save_chat(message.chat.id, message.chat.type)
 
     try:
         bot.delete_message(
@@ -788,39 +724,27 @@ def left_member(message):
             message.message_id
         )
     except Exception as error:
-        logging.warning(
-            "Leave notification delete failed: %s",
-            error
-        )
+        logging.warning("Leave delete: %s", error)
 
 
 def is_advertisement(message):
     text = message.text or message.caption or ""
 
-    if URL_RE.search(text):
-        return True
-
-    return False
+    # Havolali xabarlar reklama sifatida qaraladi.
+    return bool(URL_RE.search(text))
 
 
 @bot.message_handler(
     content_types=[
-        "text",
-        "photo",
-        "video",
-        "document",
-        "animation"
+        "text", "photo", "video",
+        "document", "animation"
     ],
     func=lambda m: m.chat.type in [
-        "group",
-        "supergroup"
+        "group", "supergroup"
     ]
 )
 def group_moderation(message):
-    save_chat(
-        message.chat.id,
-        message.chat.type
-    )
+    save_chat(message.chat.id, message.chat.type)
 
     if message.from_user:
         if message.from_user.id == ADMIN_ID:
@@ -834,7 +758,7 @@ def group_moderation(message):
             )
         except Exception as error:
             logging.warning(
-                "Advertisement delete failed: %s",
+                "Advertisement delete: %s",
                 error
             )
 
@@ -843,7 +767,7 @@ def group_moderation(message):
 
 @app.route("/")
 def home():
-    return "Bot ishlayapti!"
+    return "SAVE VIDEO bot ishlayapti!"
 
 
 @app.route("/health")
@@ -862,7 +786,6 @@ def run_flask():
 # =============== ISHGA TUSHIRISH ===============
 
 if __name__ == "__main__":
-
     init_db()
 
     threading.Thread(
@@ -870,7 +793,7 @@ if __name__ == "__main__":
         daemon=True
     ).start()
 
-    logging.info("Bot ishga tushdi!")
+    logging.info("SAVE VIDEO bot ishga tushdi!")
 
     bot.infinity_polling(
         skip_pending=True,
