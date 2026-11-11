@@ -20,7 +20,8 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_ID = 8019481444
 ADMIN_USERNAME = "@nosirxojayev"
 
-BOT_USERNAME = "SaveToVid_bot"
+# TO'G'RILANGAN BOT USERNAME
+BOT_USERNAME = "SavedToVid_bot"
 
 MAX_FILE_SIZE_MB = 49
 MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024
@@ -147,11 +148,11 @@ Quyidagi platformalardan video havolalarini yuboring:
 
 👥 GURUHLAR UCHUN MAXSUS IMKONIYATLAR
 
-Botni guruhingizga qo‘shing va quyidagi imkoniyatlardan foydalaning:
+Botni guruhingizga qo‘shing:
 
-🧹 Kirdi-chiqdi xabarlarini avtomatik o‘chirish — guruhga yangi a'zo qo‘shilganda yoki a'zo chiqib ketganda paydo bo‘ladigan xabarlarni o‘chiradi.
+🧹 Kirdi-chiqdi xabarlarini avtomatik o‘chirish — guruhga a'zo qo‘shilganda yoki a'zo chiqib ketganda paydo bo‘ladigan xabarlarni o‘chiradi.
 
-🚫 Reklama va keraksiz xabarlarni o‘chirish — guruhingizni ortiqcha reklamalardan tozalashga yordam beradi.
+🚫 Reklama va keraksiz xabarlarni o‘chirishga yordam beradi.
 
 🔒 Guruhingizni tartibli va ozoda saqlang!
 
@@ -175,13 +176,12 @@ Yuborgan linkingiz uchun @{BOT_USERNAME} nomidan sizga rahmat! 🔥
 🚫 Reklama va keraksiz xabarlarni o‘chirishga yordam beradi.
 
 ❤️ Biz bilan qoling!""",
-
         "error": "❌ Videoni yuklab bo‘lmadi. Boshqa havolani yuborib ko‘ring.",
-        "youtube_error": "❗ YouTube videosini yuklab bo‘lmadi. Havola, video cheklovlari yoki YouTube tomonidan qo‘yilgan cheklov sabab bo‘lishi mumkin.",
+        "youtube_error": "❗ YouTube videosini yuklab bo‘lmadi. Havola yoki YouTube cheklovlari sabab bo‘lishi mumkin.",
         "button": "🎬 Videoni yuklab olish",
         "group": "➕ Guruhga qo‘shish",
         "selected": "✅ Til o‘zgartirildi.",
-        "accepted": "✅ Havola qabul qilindi:",
+        "accepted": "✅ Havola qabul qilindi:"
     },
 
     "ru": {
@@ -195,24 +195,20 @@ Yuborgan linkingiz uchun @{BOT_USERNAME} nomidan sizga rahmat! 🔥
 
 📥 СКАЧИВАНИЕ ВИДЕО
 
-Отправляйте ссылки с платформ:
-
 📸 Instagram
 ▶️ YouTube
 🎵 TikTok
 💜 Likee
-🌐 И других поддерживаемых платформ.
+🌐 И другие поддерживаемые платформы.
 
 🎬 ВОЗМОЖНОСТИ
 
 ✅ Скачивание видео в MP4.
 ✅ Выбор доступного качества.
 ✅ Скачивание по ссылке.
-✅ Простой и удобный интерфейс.
+✅ Простой интерфейс.
 
 👥 ВОЗМОЖНОСТИ ДЛЯ ГРУПП
-
-Добавьте бота в свою группу:
 
 🧹 Автоматическое удаление сообщений о входе и выходе участников.
 
@@ -220,23 +216,23 @@ Yuborgan linkingiz uchun @{BOT_USERNAME} nomidan sizga rahmat! 🔥
 
 🔒 Поддерживайте порядок в своей группе!
 
-⚙️ Для работы этих функций предоставьте боту права администратора и разрешение на удаление сообщений.
+⚙️ Для работы функций предоставьте боту права администратора и разрешение на удаление сообщений.
 
 ➕ ДОБАВИТЬ БОТА В ГРУППУ
 
-❤️ Спасибо, что пользуетесь нашим ботом!
+❤️ Спасибо за использование нашего бота!
 
-📩 Отправьте ссылку на видео, чтобы начать!""",
+📩 Отправьте ссылку на видео!""",
 
         "link": "📩 Отправьте ссылку на видео.",
         "working": "⏳ Загружаем видео...",
-        "success": f"✅ Видео загружено!\n\nСпасибо за использование @{BOT_USERNAME}! 🔥\n\n👥 Бот удаляет сообщения о входе и выходе участников.\n🚫 Помогает удалять рекламу и ненужные сообщения.",
+        "success": f"✅ Видео загружено!\n\nСпасибо за использование @{BOT_USERNAME}! 🔥\n\n👥 Бот удаляет сообщения о входе и выходе участников.\n🚫 Помогает удалять рекламу.",
         "error": "❌ Не удалось скачать видео. Попробуйте другую ссылку.",
-        "youtube_error": "❗ Не удалось скачать видео YouTube. Возможны ограничения платформы.",
+        "youtube_error": "❗ Не удалось скачать YouTube-видео. Возможны ограничения платформы.",
         "button": "🎬 Скачать видео",
         "group": "➕ Добавить в группу",
         "selected": "✅ Язык изменён.",
-        "accepted": "✅ Ссылка принята:",
+        "accepted": "✅ Ссылка принята:"
     },
 
     "en": {
@@ -246,11 +242,9 @@ Yuborgan linkingiz uchun @{BOT_USERNAME} nomidan sizga rahmat! 🔥
 
 🚀 Welcome to SAVE VIDEO!
 
-I help you download videos and media from social networks quickly and easily.
+I help you download videos from social networks quickly and easily.
 
 📥 VIDEO DOWNLOADING
-
-Send links from these platforms:
 
 📸 Instagram
 ▶️ YouTube
@@ -260,14 +254,12 @@ Send links from these platforms:
 
 🎬 FEATURES
 
-✅ Download videos in MP4 format.
-✅ Choose available video quality.
+✅ Download videos in MP4.
+✅ Choose available quality.
 ✅ Download using a link.
-✅ Simple and convenient interface.
+✅ Simple interface.
 
-👥 SPECIAL GROUP FEATURES
-
-Add the bot to your group:
+👥 GROUP FEATURES
 
 🧹 Automatically delete join and leave notifications.
 
@@ -285,13 +277,13 @@ Add the bot to your group:
 
         "link": "📩 Please send a video link.",
         "working": "⏳ Downloading video...",
-        "success": f"✅ Download complete!\n\nThank you for using @{BOT_USERNAME}! 🔥\n\n👥 Automatically deletes join and leave notifications in groups.\n🚫 Helps remove advertisements and unwanted messages.",
+        "success": f"✅ Download complete!\n\nThank you for using @{BOT_USERNAME}! 🔥\n\n👥 Automatically deletes join and leave notifications.\n🚫 Helps remove advertisements.",
         "error": "❌ Download failed. Please try another link.",
         "youtube_error": "❗ Could not download YouTube video. Platform restrictions may apply.",
         "button": "🎬 Download video",
         "group": "➕ Add to group",
         "selected": "✅ Language changed.",
-        "accepted": "✅ Link accepted:",
+        "accepted": "✅ Link accepted:"
     },
 
     "ar": {
@@ -301,11 +293,9 @@ Add the bot to your group:
 
 🚀 أهلاً بك في SAVE VIDEO!
 
-أساعدك على تحميل الفيديوهات من مواقع التواصل الاجتماعي بسهولة وسرعة.
+أساعدك على تحميل الفيديوهات من مواقع التواصل الاجتماعي بسهولة.
 
 📥 تحميل الفيديوهات
-
-أرسل روابط من المنصات التالية:
 
 📸 Instagram
 ▶️ YouTube
@@ -318,17 +308,15 @@ Add the bot to your group:
 ✅ تحميل الفيديو بصيغة MP4.
 ✅ اختيار الجودة المتاحة.
 ✅ التحميل باستخدام الرابط.
-✅ واجهة بسيطة وسهلة.
+✅ واجهة سهلة.
 
 👥 مميزات المجموعات
-
-أضف البوت إلى مجموعتك:
 
 🧹 حذف رسائل دخول وخروج الأعضاء تلقائياً.
 
 🚫 حذف الإعلانات والرسائل غير المرغوب فيها.
 
-🔒 حافظ على مجموعتك منظمة ونظيفة!
+🔒 حافظ على مجموعتك منظمة!
 
 ⚙️ امنح البوت صلاحيات المشرف وإذن حذف الرسائل.
 
@@ -340,13 +328,13 @@ Add the bot to your group:
 
         "link": "📩 أرسل رابط الفيديو.",
         "working": "⏳ جارٍ تحميل الفيديو...",
-        "success": f"✅ اكتمل التحميل!\n\nشكراً لاستخدام @{BOT_USERNAME}! 🔥\n\n👥 يحذف رسائل دخول وخروج الأعضاء في المجموعات.\n🚫 يساعد في حذف الإعلانات والرسائل غير المرغوب فيها.",
+        "success": f"✅ اكتمل التحميل!\n\nشكراً لاستخدام @{BOT_USERNAME}! 🔥\n\n👥 يحذف رسائل دخول وخروج الأعضاء.\n🚫 يساعد في حذف الإعلانات.",
         "error": "❌ تعذر تحميل الفيديو. جرب رابطاً آخر.",
         "youtube_error": "❗ تعذر تحميل فيديو YouTube. قد تكون هناك قيود على المنصة.",
         "button": "🎬 تحميل الفيديو",
         "group": "➕ أضف إلى المجموعة",
         "selected": "✅ تم تغيير اللغة.",
-        "accepted": "✅ تم قبول الرابط:",
+        "accepted": "✅ تم قبول الرابط:"
     }
 }
 
@@ -468,10 +456,9 @@ def extract_video(url, folder):
 
         filepath = None
 
-        requested = info.get("requested_downloads") or []
-
-        for item in requested:
+        for item in info.get("requested_downloads") or []:
             candidate = item.get("filepath")
+
             if candidate and os.path.isfile(candidate):
                 filepath = candidate
                 break
@@ -496,9 +483,7 @@ def extract_video(url, folder):
         if not os.path.isfile(filepath):
             raise FileNotFoundError("Video fayli topilmadi")
 
-        size = os.path.getsize(filepath)
-
-        if size > MAX_FILE_SIZE:
+        if os.path.getsize(filepath) > MAX_FILE_SIZE:
             raise ValueError("Video hajmi limitdan katta")
 
         return filepath
@@ -538,7 +523,6 @@ def download_and_send(chat_id, url, status_message_id):
         logging.exception("Download error: %s", error)
 
         lang = get_lang(chat_id)
-
         text = TEXTS[lang]["error"]
 
         if "youtube.com" in url or "youtu.be" in url:
@@ -562,7 +546,6 @@ def download_and_send(chat_id, url, status_message_id):
 )
 def download_callback(call):
     key = call.data.replace("download_", "", 1)
-
     item = pending_downloads.pop(key, None)
 
     if not item:
@@ -581,7 +564,7 @@ def download_callback(call):
         TEXTS[lang]["working"]
     )
 
-    thread = threading.Thread(
+    threading.Thread(
         target=download_and_send,
         args=(
             call.message.chat.id,
@@ -589,9 +572,7 @@ def download_callback(call):
             status.message_id
         ),
         daemon=True
-    )
-
-    thread.start()
+    ).start()
 
 
 # =============== HAVOLALAR ===============
@@ -628,7 +609,6 @@ def private_text(message):
     url = match.group(0).rstrip(".,)")
 
     key = uuid.uuid4().hex[:12]
-
     pending_downloads[key] = url
 
     markup = types.InlineKeyboardMarkup()
@@ -647,7 +627,7 @@ def private_text(message):
     )
 
 
-# =============== ADMIN ===============
+# =============== ADMIN BUYRUQLARI ===============
 
 def is_admin(message):
     return (
@@ -751,8 +731,6 @@ def broadcast(message):
     )
 
 
-# Rasm, video va boshqa media orqali reklama yuborish
-
 @bot.message_handler(
     content_types=[
         "photo",
@@ -819,7 +797,6 @@ def left_member(message):
 def is_advertisement(message):
     text = message.text or message.caption or ""
 
-    # Havolali reklama xabarlarini aniqlash
     if URL_RE.search(text):
         return True
 
@@ -845,12 +822,10 @@ def group_moderation(message):
         message.chat.type
     )
 
-    # Admin xabarlariga tegilmaydi
     if message.from_user:
         if message.from_user.id == ADMIN_ID:
             return
 
-    # Reklama xabarlarini o'chirish
     if is_advertisement(message):
         try:
             bot.delete_message(
